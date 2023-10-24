@@ -8,5 +8,11 @@ namespace Resume.Presentation.Controllers
 		{
 			return View();
 		}
+
+		[HttpPost]
+		public IActionResult Create(string email, string password)
+		{
+			return View();
+		}
 	}
 }
