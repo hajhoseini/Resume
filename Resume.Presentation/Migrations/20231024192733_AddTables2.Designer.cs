@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Resume.Presentation.Models.ResumeDBContext;
 
@@ -11,9 +12,11 @@ using Resume.Presentation.Models.ResumeDBContext;
 namespace Resume.Presentation.Migrations
 {
     [DbContext(typeof(ResumeDBContext))]
-    partial class ResumeDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231024192733_AddTables2")]
+    partial class AddTables2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
