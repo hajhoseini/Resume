@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Resume.Presentation.Models.Entities.ContactUs;
-using Resume.Presentation.Models.Entities.Education;
-using Resume.Presentation.Models.Entities.Experience;
-using Resume.Presentation.Models.Entities.MySkills;
+using Resume.Domain.Entities.ContactUs;
+using Resume.Domain.Entities.Education;
+using Resume.Domain.Entities.Experience;
+using Resume.Domain.Entities.MySkills;
 
-namespace Resume.Presentation.Models.ResumeDBContext
+namespace Resume.Infrastructure.DBContext
 {
     public class ResumeDBContext : DbContext
     {
