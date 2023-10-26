@@ -1,4 +1,4 @@
-﻿namespace Resume.Presentation.Models.Entities.ContactUs;
+﻿namespace Resume.Domain.Entities.ContactUs;
 
 public class ContactUs
 {
