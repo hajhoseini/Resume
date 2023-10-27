@@ -10,5 +10,7 @@ public record ContactUsDTO
 
     public string Message { get; set; }
 
-    #endregion
+	public string Address { get; set; }
+
+	#endregion
 }

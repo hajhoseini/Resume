@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Resume.Application.DTOs.SiteSide.ContactUsDTO;
+using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities.ContactUs;
 using Resume.Domain.RepositoryInterface;
 
@@ -8,11 +9,11 @@ namespace Resume.Presentation.Controllers
 {
 	public class ContactUsController : Controller
 	{
-		private readonly IContactUsRepository _contactUsRepository;
+		private readonly IContactUsService _contactUsService;
 
-        public ContactUsController(IContactUsRepository contactUsRepository)
+        public ContactUsController(IContactUsService contactUsService)
         {
-			_contactUsRepository = contactUsRepository;				
+			_contactUsService = contactUsService;				
         }
 
 		[HttpGet]
@@ -22,19 +23,11 @@ namespace Resume.Presentation.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> ContactUs(string FullName, string Mobile, string Message)
-		{
-			ContactUs contactUs = new ContactUs()
-			{
-				FullName = FullName,
-				Mobile = Mobile,
-				Message = Message,
-				CreateDate = DateTime.Now,
-				IsSeenByAdmin = false
-			};
-			await _contactUsRepository.AddContactUs(contactUs);
-
-			return View();
+		public async Task<IActionResult> ContactUs(ContactUsDTO contactUsDTO)
+		{			
+			await _contactUsService.AddContactUs(contactUsDTO);		
+			//return View();
+			return RedirectToAction("Index", "Home");
 		}
 	}
 }

@@ -17,18 +17,18 @@ namespace Resume.Presentation
 
             builder.Services.AddDbContext<ResumeDBContext>();
 
-			#region Services
-
-			/*builder.Services.AddScoped<IContactUsService, ContactUsService>();
-            builder.Services.AddScoped<IDashboardService, DashboardService>();
-            builder.Services.AddScoped<IEducationService, EducationService>();
-            builder.Services.AddScoped<IExperienceService, ExperienceService>();
-            builder.Services.AddScoped<IMySkillService, MySkillService>();*/
+			#region Repositories
 
 			builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
 			builder.Services.AddScoped<IEducationRepository, EducationRepository>();
 			builder.Services.AddScoped<IExperienceRepository, ExperienceRepository>();
 			builder.Services.AddScoped<IMySkillsRepository, MySkillsRepository>();
+
+			#endregion
+
+			#region Services			
+
+			builder.Services.AddScoped<IContactUsService, ContactUsService>();
 
 			#endregion
 
