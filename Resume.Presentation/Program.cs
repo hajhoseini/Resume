@@ -29,6 +29,10 @@ namespace Resume.Presentation
 			#region Services			
 
 			builder.Services.AddScoped<IContactUsService, ContactUsService>();
+			builder.Services.AddScoped<IEducationService, EducationService>();
+			builder.Services.AddScoped<IExperienceService, ExperienceService>();
+			builder.Services.AddScoped<IMySkillsService, MySkillsService>();
+			builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 			#endregion
 
