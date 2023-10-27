@@ -3,24 +3,29 @@ using Resume.Application.DTOs.SiteSide.Home;
 using Resume.Domain.Entities.Education;
 using Resume.Domain.Entities.Experience;
 using Resume.Domain.Entities.MySkills;
+using Resume.Domain.RepositoryInterface;
 using Resume.Infrastructure.DBContext;
 
 namespace Resume.Presentation.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ResumeDBContext _context;
+		private readonly IEducationRepository _educationRepository;
+		private readonly IExperienceRepository _experienceRepository;
+		private readonly IMySkillsRepository _mySkillsRepository;
 
-        public HomeController(ResumeDBContext context)
+        public HomeController(IEducationRepository educationRepository, IExperienceRepository experienceRepository, IMySkillsRepository mySkillsRepository)
         {
-			_context = context;
+			_educationRepository = educationRepository;
+			_experienceRepository = experienceRepository;
+			_mySkillsRepository = mySkillsRepository;
         }
 
 		public IActionResult Index()
 		{
-			List<Education> educations = _context.Education.ToList();
-			List<Experience> experiences = _context.Experience.ToList();
-			List<MySkills> mySkills = _context.MySkills.ToList();
+			List<Education> educations = _educationRepository.GetListOFEducations();
+			List<Experience> experiences = _experienceRepository.GetListOFExperiences();
+			List<MySkills> mySkills = _mySkillsRepository.GetListOFMySkills();
 
 			HomeIndexModelDTO dto = new HomeIndexModelDTO()
 			{

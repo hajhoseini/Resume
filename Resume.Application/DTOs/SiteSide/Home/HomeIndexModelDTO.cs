@@ -4,7 +4,7 @@ using Resume.Domain.Entities.MySkills;
 
 namespace Resume.Application.DTOs.SiteSide.Home;
 
-public class HomeIndexModelDTO
+public record HomeIndexModelDTO
 {
 	#region properties
 
