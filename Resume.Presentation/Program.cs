@@ -25,6 +25,7 @@ namespace Resume.Presentation
             builder.Services.AddScoped<IExperienceService, ExperienceService>();
             builder.Services.AddScoped<IMySkillService, MySkillService>();*/
 
+			builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
 			builder.Services.AddScoped<IEducationRepository, EducationRepository>();
 			builder.Services.AddScoped<IExperienceRepository, ExperienceRepository>();
 			builder.Services.AddScoped<IMySkillsRepository, MySkillsRepository>();
