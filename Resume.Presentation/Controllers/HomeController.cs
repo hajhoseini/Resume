@@ -1,40 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Resume.Application.DTOs.SiteSide.Home;
-using Resume.Domain.Entities.Education;
-using Resume.Domain.Entities.Experience;
-using Resume.Domain.Entities.MySkills;
-using Resume.Domain.RepositoryInterface;
-using Resume.Infrastructure.DBContext;
+using Resume.Application.Services.Interfaces;
 
 namespace Resume.Presentation.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly IEducationRepository _educationRepository;
-		private readonly IExperienceRepository _experienceRepository;
-		private readonly IMySkillsRepository _mySkillsRepository;
+		private readonly IDashboardService _dashboardService;
 
-        public HomeController(IEducationRepository educationRepository, IExperienceRepository experienceRepository, IMySkillsRepository mySkillsRepository)
+        public HomeController(IDashboardService dashboardService)
         {
-			_educationRepository = educationRepository;
-			_experienceRepository = experienceRepository;
-			_mySkillsRepository = mySkillsRepository;
+			_dashboardService = dashboardService;
         }
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			List<Education> educations = _educationRepository.GetListOFEducations();
-			List<Experience> experiences = _experienceRepository.GetListOFExperiences();
-			List<MySkills> mySkills = _mySkillsRepository.GetListOFMySkills();
-
-			HomeIndexModelDTO dto = new HomeIndexModelDTO()
-			{
-				Educations = educations,
-				Experiences = experiences,
-				MySkills = mySkills
-			};
-
-
+			HomeIndexModelDTO dto = await _dashboardService.FillDashboardModel();
 			return View(dto);
 		}
 
