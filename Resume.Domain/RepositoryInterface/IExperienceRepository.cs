@@ -6,11 +6,11 @@ public interface IExperienceRepository
 {
     List<Experience> GetListOFExperiences();
 
-    Task AddExperienceAsync(Experience Experience);
+    Task AddExperienceAsync(Experience experience);
 
-    Task<Experience> GetExperienceByIdAsync(int ExperienceId);
+    Task<Experience> GetExperienceByIdAsync(int experienceId);
 
-    Task EditExperienceAsync(Experience Experience);
+    Task EditExperienceAsync(Experience experience);
 
-    Task DeleteExperienceAsync(Experience Experience);
+    Task DeleteExperienceAsync(Experience experience);
 }

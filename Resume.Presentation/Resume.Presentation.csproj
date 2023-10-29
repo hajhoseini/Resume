@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Areas\AdminPanel\Controllers\MySkillsController.cs.bak" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Areas\AdminPanel\Controllers\MySkillsController.cs.bak" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\SiteTemplate\.idea\modules.xml" />
     <Content Include="wwwroot\SiteTemplate\.idea\workspace.xml" />
   </ItemGroup>

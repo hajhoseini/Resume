@@ -7,17 +7,17 @@ namespace Resume.Presentation.Areas.AdminPanel.Controllers;
 [Area("AdminPanel")]
 public class ExperienceController : Controller
 {
-    private readonly IExperienceService _ExperienceService;
+    private readonly IExperienceService _experienceService;
 
-    public ExperienceController(IExperienceService ExperienceService)
+    public ExperienceController(IExperienceService experienceService)
     {
-        _ExperienceService = ExperienceService;
+        _experienceService = experienceService;
     }
 
     [HttpGet]
     public IActionResult Index()
     {
-        var model = _ExperienceService.GetListOFExperiences();
+        var model = _experienceService.GetListOFExperiences();
         return View(model);
     }    
 
@@ -32,7 +32,7 @@ public class ExperienceController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _ExperienceService.AddExperienceAsync(model);
+            await _experienceService.AddExperienceAsync(model);
             return RedirectToAction(nameof(Index));
         }
 
@@ -40,30 +40,30 @@ public class ExperienceController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> EditExperience(int ExperienceId)
+    public async Task<IActionResult> EditExperience(int experienceId)
     {
-        var Experience = await _ExperienceService.GetExperienceByIdAsync(ExperienceId);
+        var Experience = await _experienceService.GetExperienceByIdAsync(experienceId);
         return View(Experience);
     }
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> EditExperience(EditExperienceDTO model)
     {
-        await _ExperienceService.EditExperienceAsync(model);
+        await _experienceService.EditExperienceAsync(model);
         return RedirectToAction(nameof(Index));
     }
 
     [HttpGet]
-    public async Task<IActionResult> DeleteExperience(int ExperienceId)
+    public async Task<IActionResult> DeleteExperience(int experienceId)
     {
-        var Experience = await _ExperienceService.GetExperienceByIdAsync(ExperienceId);
+        var Experience = await _experienceService.GetExperienceByIdAsync(experienceId);
         return View(Experience);
     }
 
     [HttpPost, ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteExperience(EditExperienceDTO model)
     {
-        await _ExperienceService.DeleteExperienceAsync(model);
+        await _experienceService.DeleteExperienceAsync(model);
         return RedirectToAction(nameof(Index));
     }
 }

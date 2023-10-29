@@ -2,7 +2,6 @@
 using Resume.Domain.Entities.Education;
 using Resume.Domain.RepositoryInterface;
 using Resume.Infrastructure.DBContext;
-using System.Collections.Generic;
 
 namespace Resume.Infrastructure.Repository;
 
