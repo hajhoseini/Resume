@@ -1,33 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Resume.Application.DTOs.SiteSide.ContactUsDTO;
 using Resume.Application.Services.Interfaces;
-using Resume.Domain.Entities.ContactUs;
-using Resume.Domain.RepositoryInterface;
 
-namespace Resume.Presentation.Controllers
+namespace Resume.Presentation.Controllers;
+
+public class ContactUsController : Controller
 {
-	public class ContactUsController : Controller
-	{
-		private readonly IContactUsService _contactUsService;
+    private readonly IContactUsService _contactUsService;
 
-        public ContactUsController(IContactUsService contactUsService)
-        {
-			_contactUsService = contactUsService;				
-        }
+    public ContactUsController(IContactUsService contactUsService)
+    {
+        _contactUsService = contactUsService;
+    }
 
-		[HttpGet]
-        public IActionResult ContactUs()
-		{
-			return View();
-		}
+    [HttpGet]
+    public IActionResult ContactUs()
+    {
+        return View();
+    }
 
-		[HttpPost]
-		public async Task<IActionResult> ContactUs(ContactUsDTO contactUsDTO)
-		{			
-			await _contactUsService.AddContactUs(contactUsDTO);		
-			//return View();
-			return RedirectToAction("Index", "Home");
-		}
-	}
+    [HttpPost]
+    public async Task<IActionResult> ContactUs(ContactUsDTO contactUsDTO)
+    {
+        await _contactUsService.AddContactUs(contactUsDTO);
+        //return View();
+        return RedirectToAction("Index", "Home");
+    }
 }
