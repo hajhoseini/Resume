@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Resume.Application.DTOs.AdminSide.Education;
 using Resume.Application.Services.Interfaces;
-using Resume.Domain.Entities.Education;
 
 namespace Resume.Presentation.Areas.AdminPanel.Controllers;
 

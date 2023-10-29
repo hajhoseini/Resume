@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Resume.Domain.Entities.Experience;
-using Resume.Domain.Entities.Experience;
 using Resume.Domain.RepositoryInterface;
 using Resume.Infrastructure.DBContext;
 
@@ -15,27 +14,27 @@ public class ExperienceRepository: IExperienceRepository
         _context = context;
     }
 
-    public async Task AddExperienceAsync(Experience Experience)
+    public async Task AddExperienceAsync(Experience experience)
     {
-        await _context.Experience.AddAsync(Experience);
+        await _context.Experience.AddAsync(experience);
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteExperienceAsync(Experience Experience)
+    public async Task DeleteExperienceAsync(Experience experience)
     {
-        _context.Experience.Remove(Experience);
+        _context.Experience.Remove(experience);
         await _context.SaveChangesAsync();
     }
 
-    public async Task EditExperienceAsync(Experience Experience)
+    public async Task EditExperienceAsync(Experience experience)
     {
-        _context.Experience.Update(Experience);
+        _context.Experience.Update(experience);
         await _context.SaveChangesAsync();
     }
 
-    public Task<Experience> GetExperienceByIdAsync(int ExperienceId)
+    public Task<Experience> GetExperienceByIdAsync(int experienceId)
     {
-        return _context.Experience.FirstOrDefaultAsync(p => p.Id == ExperienceId);
+        return _context.Experience.FirstOrDefaultAsync(p => p.Id == experienceId);
     }
 
     public List<Experience> GetListOFExperiences()

@@ -1,4 +1,4 @@
-﻿@model List<Resume.Domain.Entities.Experience.Experience>
+﻿@model List<Resume.Domain.Entities.MySkills.MySkills>
 
 <div class="content-wrapper" style="min-height: 265.6px;">
     <!-- Content Header (Page header) -->
@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">سوابق شغلی</h1>
+                    <h1 class="m-0 text-dark">مهارت های من</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
@@ -24,7 +24,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">لیست سوابق شغلی</h3>
+                            <h3 class="card-title">لیست مهارت های من</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
@@ -32,45 +32,33 @@
                                 <tbody>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>عنوان شغلی</th>
-                                        <th>بازه ی زمانی </th>
-                                        <th>نام شرکت</th>
-                                        <th>آدرس سایت شرکت</th>
-                                        <th>توضیحات</th>
+                                        <th>عنوان مهارت</th>
+                                        <th>میزان تسلط (درصد)</th>
                                         <th>عملیات</th>
                                     </tr>
 
-                                    @foreach (var Experience in Model)
+                                    @foreach (var MySkills in Model)
                                     {
                                         <tr>
-                                            <td>@Experience.Id</td>
-                                            <td>@Experience.ExperienceTitle</td>
+                                            <td>@MySkills.Id</td>
+                                            <td>@MySkills.SkillTitle</td>
                                             <td>
-                                                @Experience.ExperienceDuration
-                                            </td>
-                                            <td>
-                                                @Experience.Description
-                                            </td>
-                                            <td>
-                                                @Experience.CompanyName
-                                            </td>
-                                            <td>
-                                                @Experience.CompanySite
+                                                @MySkills.Percentage
                                             </td>
                                             <td>
                                                 <a class="badge badge-primary" style="cursor:pointer;"
-                                                   asp-action="EditExperience"
+                                                   asp-action="EditMySkills"
                                                    asp-area="AdminPanel"
-                                                   asp-controller="Experience"
-                                                   asp-route-experienceId="@Experience.Id">
+                                                   asp-controller="MySkills"
+                                                   asp-route-mySkillsId="@MySkills.Id">
                                                     ویرایش
                                                 </a>
 
                                                 <a class="badge badge-danger" style="cursor:pointer;"
-                                                   asp-action="DeleteExperience"
+                                                   asp-action="DeleteMySkills"
                                                    asp-area="AdminPanel"
-                                                   asp-controller="Experience"
-                                                   asp-route-experienceId="@Experience.Id">حذف</a>
+                                                   asp-controller="MySkills"
+                                                   asp-route-mySkillsId="@MySkills.Id">حذف</a>
                                             </td>
                                         </tr>
                                     }

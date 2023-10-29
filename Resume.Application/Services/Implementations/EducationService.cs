@@ -2,7 +2,6 @@
 using Resume.Application.Services.Interfaces;
 using Resume.Domain.Entities.Education;
 using Resume.Domain.RepositoryInterface;
-using System.Reflection;
 
 namespace Resume.Application.Services.Implementations;
 
